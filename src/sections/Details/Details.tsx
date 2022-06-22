@@ -27,11 +27,38 @@ const Details: React.FC = () => {
 
       <Row>
         <Content>
-          <h1>Content</h1>
+          <div>
+            <div>
+              <p>Unitary Price</p>
+              <h5>$4.8k</h5>
+
+              <p>Mint Price</p>
+              <h5>$480k</h5>
+            </div>
+
+            <div>
+              <p>Description</p>
+              <p>
+                Lorem ipsum dolor sit amet, consectetuer
+                adipiscing elit, sed diam nonumLorem ipsum dolor
+                sit amet, consectetuer adipiscing elit, sed diam
+                nonumLorem ipsum dolor sit amet, consectetuer
+                adipiscing elit, sed diam nonumLorem ipsum dolor
+                sit amet, consectetuer adipiscing elit, sed diam
+                nonumLorem ipsum dolor sit amet, consectetuer
+                adipiscing elit, sed diam nonum
+              </p>
+            </div>
+          </div>
+
+          <img
+            src="https://img.irroba.com.br/filters:fill(fff):quality(95)/fabricad/catalog/produtos/aneis/101266/solitario-11.jpg"
+            alt=""
+          />
         </Content>
 
         <Comments>
-          <h1>Comments</h1>
+          <h3>Comments</h3>
 
           <MediaObject
             title="Designer"
