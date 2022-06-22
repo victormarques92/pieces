@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '../../theme';
 
 export const Container = styled.div`
   align-items: flex-start;
@@ -11,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const BoxImage = styled.div`
-  background-color: #6d6f72;
+  background-color: ${theme.colors.grey[3]};
   border-radius: 50%;
   height: 40px;
   min-height: 40px;
@@ -30,7 +31,6 @@ export const Content = styled.div`
   & > h4 {
     font-size: 16px;
     font-weight: 700;
-    margin-bottom: 8px;
   }
 
   & > p {

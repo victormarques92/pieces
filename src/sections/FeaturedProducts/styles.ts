@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import theme from '../../theme';
 
 export const Main = styled.div`
-  background-color: #e0e1e3;
+  background-color: ${theme.colors.grey[1]};
   padding: 64px 0;
 `;
 

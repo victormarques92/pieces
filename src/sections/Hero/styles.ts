@@ -4,8 +4,13 @@ import theme from '../../theme';
 export const Container = styled.div`
   align-items: center;
   background: transparent
-    linear-gradient(90deg, #236f8a 0%, #1b6880 100%) 0% 0%;
-  color: ${theme.colors.base.white};
+    linear-gradient(
+      90deg,
+      #236f8a 0%,
+      ${theme.colors.primary[700]} 100%
+    )
+    0% 0%;
+  color: ${theme.colors.white};
   display: flex;
   height: 510px;
   justify-content: center;

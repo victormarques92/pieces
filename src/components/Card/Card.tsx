@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../Button';
 
 import { Container, Details, Img, Label } from './styles';
 
@@ -26,9 +27,13 @@ const Card: React.FC<CardProps> = ({
       <Details featured={featured}>
         <p>{title}</p>
 
-        <button type="button" onClick={onClick}>
+        <Button
+          onClick={onClick}
+          size="small"
+          color={featured ? 'primary' : 'secondary'}
+        >
           VIEW
-        </button>
+        </Button>
       </Details>
     </Container>
   );

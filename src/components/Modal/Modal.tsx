@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ClickAwayListener from 'react-click-away-listener';
-import { Container, Content, Header } from './styles';
+import { FiX } from 'react-icons/fi';
+import { Close, Container, Content, Header } from './styles';
 
 interface ModalProps {
   open: boolean;
@@ -28,9 +29,9 @@ const Modal: React.FC<ModalProps> = ({
             <Header>
               <h4>{title}</h4>
 
-              <button type="button" onClick={onClose}>
-                FECHAR
-              </button>
+              <Close type="button" onClick={onClose}>
+                <FiX />
+              </Close>
             </Header>
 
             {children}

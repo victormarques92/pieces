@@ -1,5 +1,5 @@
 import React from 'react';
-import { MediaObject } from '../../components';
+import { Button, MediaObject } from '../../components';
 import {
   BoxAction,
   Comments,
@@ -7,8 +7,6 @@ import {
   Header,
   Row,
 } from './styles';
-
-// import { Container } from './styles';
 
 const Details: React.FC = () => {
   return (
@@ -20,8 +18,8 @@ const Details: React.FC = () => {
         />
 
         <BoxAction>
-          <button type="button">BUY NOW</button>
-          <button type="button">VIEW</button>
+          <Button>BUY NOW</Button>
+          <Button color="secondary">VIEW</Button>
         </BoxAction>
       </Header>
 
@@ -29,15 +27,19 @@ const Details: React.FC = () => {
         <Content>
           <div>
             <div>
-              <p>Unitary Price</p>
-              <h5>$4.8k</h5>
+              <div>
+                <h6>Unitary Price</h6>
+                <h3>$4.8k</h3>
+              </div>
 
-              <p>Mint Price</p>
-              <h5>$480k</h5>
+              <div>
+                <h6>Mint Price</h6>
+                <h3>$480k</h3>
+              </div>
             </div>
 
             <div>
-              <p>Description</p>
+              <h6>Description</h6>
               <p>
                 Lorem ipsum dolor sit amet, consectetuer
                 adipiscing elit, sed diam nonumLorem ipsum dolor

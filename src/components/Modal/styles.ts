@@ -17,7 +17,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  background-color: #e0e1e3;
+  background-color: ${theme.colors.grey[1]};
   border-radius: 24px;
   max-height: calc(100vh - 120px);
   overflow: hidden;
@@ -25,15 +25,23 @@ export const Content = styled.div`
 `;
 
 export const Header = styled.header`
-  background-color: #1b6880;
+  background-color: ${theme.colors.primary[700]};
   display: flex;
   justify-content: space-between;
   padding: 12px 24px;
 
   & > h4 {
-    color: ${theme.colors.base.white};
+    color: ${theme.colors.white};
     font-size: 24px;
     font-weight: 700;
     line-height: 28px;
   }
+`;
+
+export const Close = styled.button`
+  align-items: center;
+  background-color: transparent;
+  color: ${theme.colors.grey[1]};
+  display: flex;
+  font-size: 20px;
 `;

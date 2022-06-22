@@ -6,7 +6,7 @@ interface CardStylesProps {
 }
 
 export const Container = styled.div<CardStylesProps>`
-  background-color: ${theme.colors.base.white};
+  background-color: ${theme.colors.white};
   border-radius: 24px;
   display: flex;
   flex-direction: column;
@@ -39,26 +39,17 @@ export const Img = styled.img<CardStylesProps>`
 export const Details = styled.div<CardStylesProps>`
   align-items: center;
   background-color: ${({ featured }) =>
-    featured ? '#CC7AB0' : '#009cdc'};
+    featured
+      ? theme.colors.secondary.main
+      : theme.colors.primary.main};
   display: flex;
   gap: 12px;
   justify-content: space-between;
   padding: 12px 16px;
 
   & > p {
-    color: ${theme.colors.base.white};
+    color: ${theme.colors.white};
     font-size: 16px;
-  }
-
-  & > button {
-    background-color: ${({ featured }: CardStylesProps) =>
-      featured ? '#009cdc' : '#dca2b7'};
-    border-radius: 4px;
-    color: ${theme.colors.base.white};
-    font-size: 14px;
-    font-weight: 700;
-    padding: 4px 16px;
-    text-transform: uppercase;
   }
 `;
 

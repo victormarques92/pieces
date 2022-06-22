@@ -16,13 +16,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ::-moz-selection {
-      background-color: ${theme.colors.primary};
-      color: ${theme.colors.base.white};
+      background-color: ${theme.colors.primary.main};
+      color: ${theme.colors.white};
     }
 
     ::selection {
-      background-color: ${theme.colors.primary};
-      color: ${theme.colors.base.white};
+      background-color: ${theme.colors.primary.main};
+      color: ${theme.colors.white};
     }
   }
 
@@ -30,8 +30,8 @@ const GlobalStyle = createGlobalStyle`
 
   body,
   html {
-    background-color: ${theme.colors.base.white};
-    color: ${theme.colors.base.black};
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.grey[5]};
     font-size: 16px;
     letter-spacing: 0.5px;
     line-height: 24px;
