@@ -27,6 +27,7 @@ export const Content = styled.div`
   height: calc(100vh - 262px);
   overflow-y: auto;
   padding: 36px 72px 60px;
+  position: relative;
 
   & > div {
     display: flex;
@@ -78,4 +79,13 @@ export const Comments = styled.div`
     font-size: 20px;
     margin-bottom: 48px;
   }
+`;
+
+export const Favorite = styled.button`
+  background-color: transparent;
+  display: inherit;
+  font-size: 24px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
 `;

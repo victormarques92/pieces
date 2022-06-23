@@ -1,6 +1,7 @@
 import React from 'react';
+import Avatar from '../Avatar';
 
-import { BoxImage, Container, Content } from './styles';
+import { Container, Content } from './styles';
 
 interface MediaObjectProps {
   title: string;
@@ -15,9 +16,7 @@ const MediaObject: React.FC<MediaObjectProps> = ({
 }) => {
   return (
     <Container>
-      <BoxImage>
-        {image && <img src={image} alt={title} />}
-      </BoxImage>
+      <Avatar name={title} image={image} />
 
       <Content>
         <h4>{title}</h4>

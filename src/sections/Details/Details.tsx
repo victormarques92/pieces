@@ -1,21 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import {
+  AuthorProps,
+  CommentProps,
+  ProductProps,
+} from '../../@types';
 import { Button, MediaObject } from '../../components';
 import {
   BoxAction,
   Comments,
   Content,
+  Favorite,
   Header,
   Row,
 } from './styles';
 
-const Details: React.FC = () => {
+interface DataProps {
+  product: ProductProps;
+  author: AuthorProps;
+  comments?: CommentProps[];
+}
+
+interface DetailsProps {
+  data: DataProps;
+}
+
+const Details: React.FC<DetailsProps> = ({ data }) => {
+  const { product, author, comments } = data;
+  const [favorite, setFavorite] = useState(false);
+
   return (
     <>
       <Header>
-        <MediaObject
-          title="Designer"
-          text="Specialized in rings"
-        />
+        <MediaObject title={author.name} text={author.role} />
 
         <BoxAction>
           <Button>BUY NOW</Button>
@@ -25,52 +42,52 @@ const Details: React.FC = () => {
 
       <Row>
         <Content>
+          <Favorite
+            type="button"
+            onClick={() => setFavorite(!favorite)}
+          >
+            {favorite ? <FaHeart /> : <FaRegHeart />}
+          </Favorite>
+
           <div>
             <div>
               <div>
                 <h6>Unitary Price</h6>
-                <h3>$4.8k</h3>
+                <h3>${product.price.unitary}k</h3>
               </div>
 
               <div>
                 <h6>Mint Price</h6>
-                <h3>$480k</h3>
+                <h3>${product.price.mint}k</h3>
               </div>
             </div>
 
             <div>
               <h6>Description</h6>
-              <p>
-                Lorem ipsum dolor sit amet, consectetuer
-                adipiscing elit, sed diam nonumLorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam
-                nonumLorem ipsum dolor sit amet, consectetuer
-                adipiscing elit, sed diam nonumLorem ipsum dolor
-                sit amet, consectetuer adipiscing elit, sed diam
-                nonumLorem ipsum dolor sit amet, consectetuer
-                adipiscing elit, sed diam nonum
-              </p>
+              <p>{product.description}</p>
             </div>
           </div>
 
           <img
-            src="https://img.irroba.com.br/filters:fill(fff):quality(95)/fabricad/catalog/produtos/aneis/101266/solitario-11.jpg"
-            alt=""
+            src={product.image}
+            alt={product.title}
+            title={product.title}
           />
         </Content>
 
-        <Comments>
-          <h3>Comments</h3>
+        {comments && (
+          <Comments>
+            <h3>Comments</h3>
 
-          <MediaObject
-            title="Designer"
-            text="Lorem ipsum facilisis gravida habitasse vestibulum, massa maecenas facilisis consectetur, suspendisse tortor morbi dolor."
-          />
-          <MediaObject
-            title="Designer"
-            text="Lorem ipsum facilisis gravida habitasse vestibulum, massa maecenas facilisis consectetur, suspendisse tortor morbi dolor."
-          />
-        </Comments>
+            {comments.map(comment => (
+              <MediaObject
+                key={comment.id}
+                title={comment.author.name}
+                text={comment.message}
+              />
+            ))}
+          </Comments>
+        )}
       </Row>
     </>
   );

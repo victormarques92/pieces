@@ -1,13 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FiShoppingCart } from 'react-icons/fi';
+import { logo } from '../../assets';
+import { Button, DropdownMenu, Search } from '../../components';
+import { Container } from '../../styles/Grid';
 
-import { Container } from './styles';
+import { BoxHeader, BoxStart, Logo } from './styles';
 
 const Header: React.FC = () => {
+  const [find, setFind] = useState('');
+
   return (
-    <Container>
-      <button type="button">Button 1</button>
-      <button type="button">Button 2</button>
-    </Container>
+    <BoxHeader>
+      <Container>
+        <BoxStart>
+          <Logo to="/">
+            <img src={logo} alt="logo" />
+          </Logo>
+
+          <DropdownMenu />
+        </BoxStart>
+
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gridGap: 32,
+          }}
+        >
+          <Search
+            placeholder="Pesquisar modelo ou designer"
+            value={find}
+            onChange={setFind}
+          />
+
+          <FiShoppingCart fontSize={20} />
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gridGap: 12,
+          }}
+        >
+          <Button>Upload</Button>
+          <Button color="secondary">Mint</Button>
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gridGap: 12,
+          }}
+        >
+          <button
+            type="button"
+            style={{
+              background: 'transparent',
+              fontSize: 14,
+              fontWeight: 600,
+            }}
+          >
+            Login
+          </button>
+          <span>|</span>
+          <button
+            type="button"
+            style={{
+              background: 'transparent',
+              fontSize: 14,
+              fontWeight: 600,
+            }}
+          >
+            Sign up
+          </button>
+        </div>
+      </Container>
+    </BoxHeader>
   );
 };
 

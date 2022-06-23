@@ -45,11 +45,12 @@ export const Details = styled.div<CardStylesProps>`
   display: flex;
   gap: 12px;
   justify-content: space-between;
+  min-height: 72px;
   padding: 12px 16px;
 
   & > p {
     color: ${theme.colors.white};
-    font-size: 16px;
+    ${theme.typography.body[1]}
   }
 `;
 

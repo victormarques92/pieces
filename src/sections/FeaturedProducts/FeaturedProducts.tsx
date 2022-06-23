@@ -1,18 +1,44 @@
 import React, { useState } from 'react';
-import { Card, CardProps, Modal } from '../../components';
+import {
+  AuthorProps,
+  CommentProps,
+  ProductProps,
+} from '../../@types';
+import { Card, Modal } from '../../components';
 import { Container } from '../../styles/Grid';
 import Details from '../Details';
 
 import { ColumnFeatured, Grid, Main, RowAds } from './styles';
 
+interface DataProps {
+  id: number;
+  product: ProductProps;
+  author: AuthorProps;
+  comments?: CommentProps[];
+}
+
 interface FeaturedProductsProps {
-  data: Omit<CardProps, 'onClick'>[];
+  data: DataProps[];
 }
 
 const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
   data,
 }) => {
-  const [openModal, setOpenModal] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
+  const [productOpened, setProductOpened] =
+    useState<DataProps>();
+
+  const handleOpenModal = (value: DataProps) => {
+    setOpenModal(true);
+
+    setProductOpened(value);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+
+    setProductOpened(undefined);
+  };
 
   return (
     <Main>
@@ -20,23 +46,24 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
         <RowAds>
           <Grid>
             {data.map(item =>
-              item.featured ? (
-                <ColumnFeatured>
+              item.product.featured ? (
+                <ColumnFeatured key={item.id}>
                   <Card
-                    image={item.image}
-                    title={item.title}
-                    onClick={() => setOpenModal(true)}
-                    label={item.label}
-                    featured={item.featured}
+                    image={item.product.image}
+                    title={item.product.title}
+                    onClick={() => handleOpenModal(item)}
+                    label={item.product.label}
+                    featured={item.product.featured}
                   />
                 </ColumnFeatured>
               ) : (
                 <Card
-                  image={item.image}
-                  title={item.title}
-                  onClick={() => setOpenModal(true)}
-                  label={item.label}
-                  featured={item.featured}
+                  key={item.id}
+                  image={item.product.image}
+                  title={item.product.title}
+                  onClick={() => handleOpenModal(item)}
+                  label={item.product.label}
+                  featured={item.product.featured}
                 />
               ),
             )}
@@ -53,11 +80,11 @@ const FeaturedProducts: React.FC<FeaturedProductsProps> = ({
       </Container>
 
       <Modal
-        title="Anel Ninja duplo Fiord Line"
+        title={productOpened?.product.title ?? ''}
         open={openModal}
-        onClose={() => setOpenModal(false)}
+        onClose={handleCloseModal}
       >
-        <Details />
+        {productOpened && <Details data={productOpened} />}
       </Modal>
     </Main>
   );

@@ -30,12 +30,22 @@ const Dropdown: React.FC = () => {
 
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger>…</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger>
+        <span
+          style={{
+            background: 'transparent',
+            fontSize: 14,
+            fontWeight: 600,
+          }}
+        >
+          Explorer
+        </span>
+      </DropdownMenu.Trigger>
       <StyledContent>
-        <DropdownMenu.Item>…</DropdownMenu.Item>
-        <DropdownMenu.Item>…</DropdownMenu.Item>
+        {/* <DropdownMenu.Item>…</DropdownMenu.Item>
+        <DropdownMenu.Item>…</DropdownMenu.Item> */}
 
-        <DropdownMenu.Separator />
+        {/* <DropdownMenu.Separator /> */}
 
         <DropdownMenu.Root>
           <DropdownMenu.Label>Label</DropdownMenu.Label>
@@ -49,9 +59,9 @@ const Dropdown: React.FC = () => {
           </StyledContent>
         </DropdownMenu.Root>
 
-        <DropdownMenu.Separator />
+        {/* <DropdownMenu.Separator />
 
-        <DropdownMenu.Item>…</DropdownMenu.Item>
+        <DropdownMenu.Item>…</DropdownMenu.Item> */}
       </StyledContent>
     </DropdownMenu.Root>
   );

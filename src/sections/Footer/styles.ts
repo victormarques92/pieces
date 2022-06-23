@@ -11,6 +11,6 @@ export const Container = styled.div`
 
   & > p {
     color: ${theme.colors.grey[5]};
-    font-size: 12px;
+    ${theme.typography.capition}
   }
 `;
