@@ -5,12 +5,14 @@ import theme from '../../theme';
 export type ButtonStyleProps = {
   color?: 'primary' | 'secondary' | 'default';
   size?: 'medium' | 'small';
+  block?: boolean;
 };
 
 export const Btn = styled.button<ButtonStyleProps>`
   border-radius: 4px;
   height: fit-content;
   transition: 0.15s ease-in-out;
+  width: ${({ block }) => (block ? '100%' : 'auto')};
 
   ${theme.typography.body[3]}
 

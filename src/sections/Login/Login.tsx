@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TbBrandGoogle, TbBrandMeta } from 'react-icons/tb';
-import { Divider, TextField } from '../../components';
+import { Button, Divider, TextField } from '../../components';
 import { Btn, Container, Others } from './styles';
 
 const Login: React.FC = () => {
@@ -22,6 +22,10 @@ const Login: React.FC = () => {
         value={password}
         onChange={setPassword}
       />
+
+      <Button block color="secondary">
+        Entrar
+      </Button>
 
       <Divider />
 

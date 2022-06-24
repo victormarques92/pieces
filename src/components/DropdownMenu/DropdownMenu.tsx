@@ -1,68 +1,70 @@
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React, { ReactElement } from 'react';
+import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { Content, Item, Trigger, TriggerItem } from './styles';
 
-// import { Container } from './styles';
+interface ItemProps {
+  id: string | number;
+  label: string;
+  link?: string;
+}
 
-const Dropdown: React.FC = () => {
-  const slideDown = keyframes({
-    '0%': { opacity: 0, transform: 'translateY(-10px)' },
-    '100%': { opacity: 1, transform: 'translateY(0)' },
-  });
+interface DataProps extends ItemProps {
+  title?: string;
+  submenu?: ItemProps[];
+}
 
-  const slideUp = keyframes({
-    '0%': { opacity: 0, transform: 'translateY(10px)' },
-    '100%': { opacity: 1, transform: 'translateY(0)' },
-  });
+interface DropdownProps {
+  trigger: ReactElement;
+  data: DataProps[];
+}
 
-  const StyledContent = styled(DropdownMenu.Content)`
-    animation-duration: '0.6s';
-    animation-timing-function: 'cubic-bezier(0.16, 1, 0.3, 1)';
-    animation-fill-mode: 'forwards';
-
-    &[data-side='top'] {
-      animation-name: ${slideUp};
-    }
-    &[data-side='bottom'] {
-      animation-name: ${slideDown};
-    }
-  `;
-
+const Dropdown: React.FC<DropdownProps> = ({
+  trigger,
+  data,
+}) => {
   return (
     <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <span
-          style={{
-            background: 'transparent',
-            fontSize: 14,
-            fontWeight: 600,
-          }}
-        >
-          Explorer
-        </span>
-      </DropdownMenu.Trigger>
-      <StyledContent>
-        {/* <DropdownMenu.Item>…</DropdownMenu.Item>
-        <DropdownMenu.Item>…</DropdownMenu.Item> */}
+      <Trigger>{trigger}</Trigger>
 
-        {/* <DropdownMenu.Separator /> */}
+      <Content>
+        {data.map(menu => {
+          if (menu.submenu) {
+            return (
+              <DropdownMenu.Root key={menu.id}>
+                <TriggerItem>
+                  {menu.label} <FiArrowRight />
+                </TriggerItem>
 
-        <DropdownMenu.Root>
-          <DropdownMenu.Label>Label</DropdownMenu.Label>
-          <DropdownMenu.TriggerItem>
-            Sub menu →
-          </DropdownMenu.TriggerItem>
-          <StyledContent>
-            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
-            <DropdownMenu.Item>Sub menu item</DropdownMenu.Item>
-            <DropdownMenu.Arrow />
-          </StyledContent>
-        </DropdownMenu.Root>
+                <Content sideOffset={-4} alignOffset={0}>
+                  {menu.submenu.map(submenu => (
+                    <Item key={submenu.id}>
+                      {submenu.link ? (
+                        <Link to={submenu.link}>
+                          {submenu.label}
+                        </Link>
+                      ) : (
+                        submenu.label
+                      )}
+                    </Item>
+                  ))}
+                </Content>
+              </DropdownMenu.Root>
+            );
+          }
 
-        {/* <DropdownMenu.Separator />
-
-        <DropdownMenu.Item>…</DropdownMenu.Item> */}
-      </StyledContent>
+          return (
+            <Item key={menu.id}>
+              {menu.link ? (
+                <Link to={menu.link}>{menu.label}</Link>
+              ) : (
+                menu.label
+              )}
+            </Item>
+          );
+        })}
+      </Content>
     </DropdownMenu.Root>
   );
 };

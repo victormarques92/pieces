@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiShoppingCart } from 'react-icons/fi';
+import { FiChevronDown, FiShoppingCart } from 'react-icons/fi';
 import { logo } from '../../assets';
 import {
   Button,
@@ -9,6 +9,7 @@ import {
 } from '../../components';
 import { Container } from '../../styles/Grid';
 import Login from '../Login';
+import dataList from './dataList';
 
 import {
   BoxActions,
@@ -31,7 +32,14 @@ const Header: React.FC = () => {
             <img src={logo} alt="logo" />
           </Logo>
 
-          <DropdownMenu />
+          <DropdownMenu
+            trigger={
+              <Button>
+                Explorer <FiChevronDown />
+              </Button>
+            }
+            data={dataList}
+          />
         </BoxStart>
 
         <BoxMiddle>

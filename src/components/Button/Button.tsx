@@ -10,11 +10,18 @@ const Button: React.FC<ButtonProps> = ({
   type = 'button',
   color = 'default',
   size = 'medium',
+  block,
   onClick,
   children,
 }) => {
   return (
-    <Btn type={type} onClick={onClick} color={color} size={size}>
+    <Btn
+      type={type}
+      onClick={onClick}
+      color={color}
+      size={size}
+      block={block}
+    >
       {children}
     </Btn>
   );
