@@ -3,13 +3,12 @@ import { switchProp } from 'styled-tools';
 import theme from '../../theme';
 
 export type ButtonStyleProps = {
-  color?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary' | 'default';
   size?: 'medium' | 'small';
 };
 
 export const Btn = styled.button<ButtonStyleProps>`
   border-radius: 4px;
-  color: ${theme.colors.white};
   height: fit-content;
   transition: 0.15s ease-in-out;
 
@@ -18,6 +17,7 @@ export const Btn = styled.button<ButtonStyleProps>`
   ${switchProp('color', {
     primary: css`
       background-color: ${theme.colors.primary.main};
+      color: ${theme.colors.white};
 
       &:hover {
         background-color: ${theme.colors.primary[600]};
@@ -25,9 +25,18 @@ export const Btn = styled.button<ButtonStyleProps>`
     `,
     secondary: css`
       background-color: ${theme.colors.secondary.main};
+      color: ${theme.colors.white};
 
       &:hover {
         background-color: ${theme.colors.secondary[600]};
+      }
+    `,
+    default: css`
+      background-color: transparent;
+      color: ${theme.colors.grey[5]};
+
+      &:hover {
+        background-color: ${theme.colors.grey[2]};
       }
     `,
   })}

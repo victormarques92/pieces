@@ -32,3 +32,27 @@ export const BoxSearch = styled.div`
 
   ${theme.typography.body[2]}
 `;
+
+export const BoxMiddle = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 32px;
+`;
+
+export const ButtonCart = styled(Link)`
+  display: inline-flex;
+  color: ${theme.colors.grey[5]};
+  font-size: 24px;
+`;
+
+export const BoxActions = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 12px;
+`;
+
+export const BoxEnd = styled.div`
+  align-items: center;
+  display: flex;
+  gap: 12px;
+`;

@@ -1,8 +1,6 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import { Btn, ButtonStyleProps } from './styles';
 
-// import { Container } from './styles';
-
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
   ButtonStyleProps & {
     onClick?: () => void;
@@ -10,7 +8,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> &
 
 const Button: React.FC<ButtonProps> = ({
   type = 'button',
-  color = 'primary',
+  color = 'default',
   size = 'medium',
   onClick,
   children,

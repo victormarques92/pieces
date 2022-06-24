@@ -35,7 +35,7 @@ const Details: React.FC<DetailsProps> = ({ data }) => {
         <MediaObject title={author.name} text={author.role} />
 
         <BoxAction>
-          <Button>BUY NOW</Button>
+          <Button color="primary">BUY NOW</Button>
           <Button color="secondary">VIEW</Button>
         </BoxAction>
       </Header>

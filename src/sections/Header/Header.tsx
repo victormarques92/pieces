@@ -1,10 +1,24 @@
 import React, { useState } from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 import { logo } from '../../assets';
-import { Button, DropdownMenu, Search } from '../../components';
+import {
+  Button,
+  DropdownMenu,
+  Popover,
+  Search,
+} from '../../components';
 import { Container } from '../../styles/Grid';
+import Login from '../Login';
 
-import { BoxHeader, BoxStart, Logo } from './styles';
+import {
+  BoxActions,
+  BoxEnd,
+  BoxHeader,
+  BoxMiddle,
+  BoxStart,
+  ButtonCart,
+  Logo,
+} from './styles';
 
 const Header: React.FC = () => {
   const [find, setFind] = useState('');
@@ -20,62 +34,36 @@ const Header: React.FC = () => {
           <DropdownMenu />
         </BoxStart>
 
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gridGap: 32,
-          }}
-        >
+        <BoxMiddle>
           <Search
             placeholder="Pesquisar modelo ou designer"
             value={find}
             onChange={setFind}
           />
 
-          <FiShoppingCart fontSize={20} />
-        </div>
+          <ButtonCart to="/cart">
+            <FiShoppingCart />
+          </ButtonCart>
+        </BoxMiddle>
 
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gridGap: 12,
-          }}
-        >
-          <Button>Upload</Button>
-          <Button color="secondary">Mint</Button>
-        </div>
+        <BoxActions>
+          <Button color="primary">Upload</Button>
+        </BoxActions>
 
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gridGap: 12,
-          }}
-        >
-          <button
-            type="button"
-            style={{
-              background: 'transparent',
-              fontSize: 14,
-              fontWeight: 600,
-            }}
-          >
-            Login
-          </button>
-          <span>|</span>
-          <button
-            type="button"
-            style={{
-              background: 'transparent',
-              fontSize: 14,
-              fontWeight: 600,
-            }}
-          >
+        <BoxEnd>
+          <Popover
+            trigger={
+              <Button color="default" size="small">
+                Login
+              </Button>
+            }
+            content={<Login />}
+          />
+
+          <Button color="secondary" size="small">
             Sign up
-          </button>
-        </div>
+          </Button>
+        </BoxEnd>
       </Container>
     </BoxHeader>
   );

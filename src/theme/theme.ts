@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default {
-  name: 'day',
+  name: 'pieces',
   breakpoints: {
     sm: '600px',
     md: '960px',
